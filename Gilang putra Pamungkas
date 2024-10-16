@@ -1,0 +1,22 @@
+import imageio.v3 as img
+import numpy as np
+import matplotlib.pyplot as plt
+
+path ="C:/Users/komputer jarkom 3/Documents/gilangpcd/gilangpcd/860.jpeg"
+
+image = img.imread(path)
+image_neg = 255 - image
+
+r_image = image [:,:,0]
+r_neg = image_neg[:,:,0]
+
+hist_r, bins_r = np.histogram(r_image.flatten(), bins=256, range =[0,256])
+
+plt.figure(figsize=(20,9))
+plt.subplot(2,1,1)
+plt.plot(hist_r,color="blue", label="histogram R awal")
+
+plt.subplot(2,1,2)
+plt.show()
+
+img.imwrite("C:/Users/komputer jarkom 3/Documents/gilangpcd/gilangpcd/860.jpeg",image_neg)
